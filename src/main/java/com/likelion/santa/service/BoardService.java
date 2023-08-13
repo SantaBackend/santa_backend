@@ -15,11 +15,25 @@ public class BoardService {
 
     //게시물 작성
     @Transactional
-    public BoardDto write(BoardDto boarddto){
-        Board board = boarddto.toEntity();
+    public BoardDto write(BoardDto boardDto){
+        Board board = boardDto.toEntity();
+//        Board board = Board.builder()
+//                .pmntn_nm(boardDto.getPmntn_nm())
+//                .pmntn_main(boardDto.getPmntn_main())
+//                .xpmntn_lt(boardDto.getXpmntn_lt())
+//                .pmntn_dffl(boardDto.getPmntn_dffl())
+//                .pmntn_uppl(boardDto.getPmntn_uppl())
+//                .pmntn_godn(boardDto.getPmntn_godn())
+//                .hkngpntdscrt(boardDto.getHkngpntdscrt())
+//                .mntninfopoflc(boardDto.getMntninfopoflc())
+//                .pbtrninfodscrt(boardDto.getPbtrninfodscrt())
+//                .mtnImgUrl(boardDto.getMtnImgUrl())
+//                .hkImgUrl(boardDto.getHkImgUrl())
+//                .build();
+
         boardRepository.save(board);
 
-        return boarddto;
+        return boardDto;
     }
 
     //게시물 조회
@@ -42,17 +56,15 @@ public class BoardService {
         });
 
         board.update(
-                boardDto.getPmtn_nm(),
+                boardDto.getPmntn_nm(),
                 boardDto.getPmntn_main(),
-                boardDto.getXpmtn_lt(),
+                boardDto.getXpmntn_lt(),
                 boardDto.getPmntn_dffl(),
                 boardDto.getPmntn_uppl(),
                 boardDto.getPmntn_godn(),
                 boardDto.getHkngpntdscrt(),
                 boardDto.getMntninfopoflc(),
-                boardDto.getPbtrninfodscrt(),
-                boardDto.getMtnImgUrl(),
-                boardDto.getHkImgUrl()
+                boardDto.getPbtrninfodscrt()
         );
 
         return board.getId();
