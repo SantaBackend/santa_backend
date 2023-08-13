@@ -15,7 +15,7 @@ public class BoardController {
     private BoardService boardService;
 
     //게시물 작성
-    @PostMapping("/post")
+    @PostMapping()
     public ResponseEntity<String> writeBoard(@RequestBody BoardDto boardDto) {
         boardService.write(boardDto);
         return ResponseEntity.status(HttpStatus.CREATED).body("게시물이 작성되었습니다.");
