@@ -1,5 +1,6 @@
 package com.likelion.santa.entity;
 
+import com.likelion.santa.dto.BoardDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -58,17 +59,36 @@ public class Board {
     @Column(nullable = false)
     private String pbtrninfodscrt;
 
+    //산 이미지
+    @Column
+    private String mntnImageUrl;
+
+    //등산로 이미지
+    @Column String hkImageUrl;
+
     //영속성
-    public void update(String pmntn_nm, String pmntn_main, double xpmntn_lt, String pmntn_dffl, Long pmntn_uppl, Long pmntn_godn, String hkngpntdscrt, String mntninfopoflc, String pbtrninfodscrt) {
-        this.pmntn_nm = pmntn_nm;
-        this.pmntn_main = pmntn_main;
-        this.xpmntn_lt = xpmntn_lt;
-        this.pmntn_dffl = pmntn_dffl;
-        this.pmntn_uppl = pmntn_uppl;
-        this.pmntn_godn = pmntn_godn;
-        this.hkngpntdscrt = hkngpntdscrt;
-        this.mntninfopoflc = mntninfopoflc;
-        this.pbtrninfodscrt = pbtrninfodscrt;
+//    public void update(String pmntn_nm, String pmntn_main, double xpmntn_lt, String pmntn_dffl, Long pmntn_uppl, Long pmntn_godn, String hkngpntdscrt, String mntninfopoflc, String pbtrninfodscrt) {
+//        this.pmntn_nm = pmntn_nm;
+//        this.pmntn_main = pmntn_main;
+//        this.xpmntn_lt = xpmntn_lt;
+//        this.pmntn_dffl = pmntn_dffl;
+//        this.pmntn_uppl = pmntn_uppl;
+//        this.pmntn_godn = pmntn_godn;
+//        this.hkngpntdscrt = hkngpntdscrt;
+//        this.mntninfopoflc = mntninfopoflc;
+//        this.pbtrninfodscrt = pbtrninfodscrt;
+//    }
+
+    public void update(BoardDto boardDto){
+        this.pmntn_nm = boardDto.getPmntn_nm();
+        this.pmntn_main = boardDto.getPmntn_main();
+        this.xpmntn_lt = boardDto.getXpmntn_lt();
+        this.pmntn_dffl = boardDto.getPmntn_dffl();
+        this.pmntn_uppl = boardDto.getPmntn_uppl();
+        this.pmntn_godn = boardDto.getPmntn_godn();
+        this.hkngpntdscrt = boardDto.getHkngpntdscrt();
+        this.mntninfopoflc = boardDto.getMntninfopoflc();
+        this.pbtrninfodscrt = boardDto.getPbtrninfodscrt();
     }
 
     @OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)

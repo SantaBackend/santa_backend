@@ -41,17 +41,7 @@ public class BoardService {
             return new IllegalArgumentException("Board Id를 찾을 수 없습니다!");
         });
 
-        board.update(
-                boardDto.getPmntn_nm(),
-                boardDto.getPmntn_main(),
-                boardDto.getXpmntn_lt(),
-                boardDto.getPmntn_dffl(),
-                boardDto.getPmntn_uppl(),
-                boardDto.getPmntn_godn(),
-                boardDto.getHkngpntdscrt(),
-                boardDto.getMntninfopoflc(),
-                boardDto.getPbtrninfodscrt()
-        );
+        board.update(boardDto);
 
         return board.getId();
     }
@@ -65,4 +55,5 @@ public class BoardService {
 
         boardRepository.delete(board);
     }
+    
 }
