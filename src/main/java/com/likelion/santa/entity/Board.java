@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "board")
@@ -70,4 +71,7 @@ public class Board {
         this.pbtrninfodscrt = pbtrninfodscrt;
     }
 
+    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @OrderBy("id asc") //댓글 정렬
+    private List<Reply> replyList;
 }

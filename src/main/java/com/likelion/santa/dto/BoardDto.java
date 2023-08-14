@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,6 +33,8 @@ public class BoardDto {
     private String mntninfopoflc;
     //대중교통정보 설명
     private String pbtrninfodscrt;
+
+    private List<ReplyResponse> replyList;
 
     public Board toEntity(){
         Board board = Board.builder()
@@ -58,5 +63,6 @@ public class BoardDto {
         this.hkngpntdscrt = board.getHkngpntdscrt();
         this.mntninfopoflc = board.getMntninfopoflc();
         this.pbtrninfodscrt = board.getPbtrninfodscrt();
+        this.replyList = board.getReplyList().stream().map(ReplyResponse::new).collect(Collectors.toList());
     }
 }
