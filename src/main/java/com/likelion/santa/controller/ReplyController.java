@@ -15,8 +15,12 @@ public class ReplyController {
     ReplyService replyService;
 
     @PostMapping("")
-    public ResponseEntity<String> postRely(@PathVariable Long board_id, @RequestBody ReplyRequest request){
+    public ResponseEntity<String> postRely(@PathVariable Long board_id, @RequestBody ReplyRequest request) {
         try {
+            if (replyService.hasUserCommentedOnBoard(board_id, request.getUsername())) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("이미 댓글을 작성하셨습니다!");
+            }
+
             replyService.write(board_id, request);
             return ResponseEntity.ok("댓글 작성 성공");
         } catch (Exception e) {

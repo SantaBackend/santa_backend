@@ -24,7 +24,7 @@ public class ReplyService {
     @Transactional
     public Long write(Long board_id, ReplyRequest request){
         Board board = boardRepository.findById(board_id).orElseThrow(() -> {
-            return new IllegalArgumentException("Board Id를 찾을 수 없습니다!");
+            throw new IllegalArgumentException("Board Id를 찾을 수 없습니다!");
         });
 
         Reply reply = request.toEntity();
@@ -35,6 +35,10 @@ public class ReplyService {
         replyRepository.save(reply);
 
         return board_id;
+    }
+
+    public boolean hasUserCommentedOnBoard(Long boardId, String username) {
+        return replyRepository.existsByBoard_IdAndUsername(boardId, username);
     }
 
     //댓글 삭제
