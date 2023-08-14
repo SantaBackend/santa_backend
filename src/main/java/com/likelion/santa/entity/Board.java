@@ -59,6 +59,15 @@ public class Board {
     @Column(nullable = false)
     private String pbtrninfodscrt;
 
+    //산코드
+    @Column(nullable = false)
+    private String mntnid;
+
+    //산명
+    @Column(nullable = false)
+    private String mntnnm;
+
+
     //산 이미지
     @Column
     private String mntnImageUrl;
