@@ -55,5 +55,32 @@ public class BoardService {
 
         boardRepository.delete(board);
     }
-    
+
+    //산 이미지 업로드
+    @Transactional
+    public String mntnImageUpload(Long id, String url){
+        Board board = boardRepository.findById(id).orElseThrow(() -> {
+            throw new IllegalArgumentException("Board Id를 찾을 수 없습니다!");
+        });
+
+        BoardDto boardDto = new BoardDto(board);
+        boardDto.setMntnImageUrl(url);
+        board.update(boardDto);
+
+        return "이미지 업로드 성공";
+    }
+
+    //등산로 이미지 업로드
+    @Transactional
+    public String hkImageUpload(Long id, String url){
+        Board board = boardRepository.findById(id).orElseThrow(() -> {
+            throw new IllegalArgumentException("Board Id를 찾을 수 없습니다!");
+        });
+
+        BoardDto boardDto = new BoardDto(board);
+        boardDto.setHkImageUrl(url);
+        board.update(boardDto);
+
+        return "이미지 업로드 성공";
+    }
 }

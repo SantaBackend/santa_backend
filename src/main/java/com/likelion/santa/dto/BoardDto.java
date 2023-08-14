@@ -33,6 +33,10 @@ public class BoardDto {
     private String mntninfopoflc;
     //대중교통정보 설명
     private String pbtrninfodscrt;
+    //산 이미지
+    private String mntnImageUrl;
+    //등산로 이미지
+    private String hkImageUrl;
 
     private List<ReplyResponse> replyList;
 
@@ -47,6 +51,8 @@ public class BoardDto {
                 .hkngpntdscrt(hkngpntdscrt)
                 .mntninfopoflc(mntninfopoflc)
                 .pbtrninfodscrt(pbtrninfodscrt)
+                .mntnImageUrl(mntnImageUrl)
+                .hkImageUrl(hkImageUrl)
                 .build();
 
         return board;
@@ -63,6 +69,8 @@ public class BoardDto {
         this.hkngpntdscrt = board.getHkngpntdscrt();
         this.mntninfopoflc = board.getMntninfopoflc();
         this.pbtrninfodscrt = board.getPbtrninfodscrt();
+        this.mntnImageUrl = board.getMntnImageUrl();
+        this.hkImageUrl = board.getHkImageUrl();
         this.replyList = board.getReplyList().stream().map(ReplyResponse::new).collect(Collectors.toList());
     }
 }
