@@ -29,7 +29,7 @@ public class BoardController {
     }
 
     //게시물 수정
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<String> updateBoard(@RequestBody BoardDto boardDto, @PathVariable Long id) {
         boardService.update(boardDto, id);
         return ResponseEntity.status(HttpStatus.OK).body("게시물이 수정되었습니다.");

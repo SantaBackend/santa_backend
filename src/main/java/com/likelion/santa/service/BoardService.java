@@ -17,20 +17,6 @@ public class BoardService {
     @Transactional
     public BoardDto write(BoardDto boardDto){
         Board board = boardDto.toEntity();
-//        Board board = Board.builder()
-//                .pmntn_nm(boardDto.getPmntn_nm())
-//                .pmntn_main(boardDto.getPmntn_main())
-//                .xpmntn_lt(boardDto.getXpmntn_lt())
-//                .pmntn_dffl(boardDto.getPmntn_dffl())
-//                .pmntn_uppl(boardDto.getPmntn_uppl())
-//                .pmntn_godn(boardDto.getPmntn_godn())
-//                .hkngpntdscrt(boardDto.getHkngpntdscrt())
-//                .mntninfopoflc(boardDto.getMntninfopoflc())
-//                .pbtrninfodscrt(boardDto.getPbtrninfodscrt())
-//                .mtnImgUrl(boardDto.getMtnImgUrl())
-//                .hkImgUrl(boardDto.getHkImgUrl())
-//                .build();
-
         boardRepository.save(board);
 
         return boardDto;
