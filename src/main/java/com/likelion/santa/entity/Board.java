@@ -67,7 +67,6 @@ public class Board {
     @Column(nullable = false)
     private String mntnnm;
 
-
     //산 이미지
     @Column
     private String mntnImageUrl;
@@ -85,6 +84,8 @@ public class Board {
         this.hkngpntdscrt = boardDto.getHkngpntdscrt();
         this.mntninfopoflc = boardDto.getMntninfopoflc();
         this.pbtrninfodscrt = boardDto.getPbtrninfodscrt();
+        this.mntnnm = boardDto.getMntnnm();
+        this.mntnid = boardDto.getMntnid();
         this.mntnImageUrl = boardDto.getMntnImageUrl();
         this.hkImageUrl = boardDto.getHkImageUrl();
     }

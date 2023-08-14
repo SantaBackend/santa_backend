@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,6 +34,10 @@ public class BoardDto {
     private String mntninfopoflc;
     //대중교통정보 설명
     private String pbtrninfodscrt;
+    //산코드
+    private String mntnid;
+    //산명
+    private String mntnnm;
     //산 이미지
     private String mntnImageUrl;
     //등산로 이미지
@@ -51,6 +56,8 @@ public class BoardDto {
                 .hkngpntdscrt(hkngpntdscrt)
                 .mntninfopoflc(mntninfopoflc)
                 .pbtrninfodscrt(pbtrninfodscrt)
+                .mntnid(mntnid)
+                .mntnnm(mntnnm)
                 .mntnImageUrl(mntnImageUrl)
                 .hkImageUrl(hkImageUrl)
                 .build();
@@ -69,6 +76,8 @@ public class BoardDto {
         this.hkngpntdscrt = board.getHkngpntdscrt();
         this.mntninfopoflc = board.getMntninfopoflc();
         this.pbtrninfodscrt = board.getPbtrninfodscrt();
+        this.mntnid = board.getMntnid();
+        this.mntnnm =board.getMntnnm();
         this.mntnImageUrl = board.getMntnImageUrl();
         this.hkImageUrl = board.getHkImageUrl();
         this.replyList = board.getReplyList().stream().map(ReplyResponse::new).collect(Collectors.toList());
