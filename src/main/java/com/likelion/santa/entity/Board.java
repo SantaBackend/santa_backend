@@ -52,12 +52,6 @@ public class Board {
     @Column String hkImageUrl;
 
     public void update(BoardDto boardDto){
-        this.pmntn_nm = boardDto.getPmntn_nm();
-        this.pmntn_main = boardDto.getPmntn_main();
-        this.xpmntn_lt = boardDto.getXpmntn_lt();
-        this.pmntn_dffl = boardDto.getPmntn_dffl();
-        this.pmntn_uppl = boardDto.getPmntn_uppl();
-        this.pmntn_godn = boardDto.getPmntn_godn();
         this.hkngpntdscrt = boardDto.getHkngpntdscrt();
         this.mntninfopoflc = boardDto.getMntninfopoflc();
         this.pbtrninfodscrt = boardDto.getPbtrninfodscrt();
