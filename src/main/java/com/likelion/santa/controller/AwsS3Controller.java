@@ -3,9 +3,13 @@ package com.likelion.santa.controller;
 import com.likelion.santa.service.AwsS3Service;
 import com.likelion.santa.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/upload")

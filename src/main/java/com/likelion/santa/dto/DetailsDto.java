@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,6 +25,12 @@ public class DetailsDto {
     private Long pmntn_godn;
     //등산로 난이도 명
     private String pmntn_dffl;
+    //위도
+    private String lattitude;
+    //경도
+    private String longitude;
+    //장소이름
+    private String place_name;
 
     public DetailsDto(Details details){
         this.id = details.getId();
@@ -32,6 +40,9 @@ public class DetailsDto {
         this.pmntn_uppl = details.getPmntn_uppl();
         this.pmntn_godn = details.getPmntn_godn();
         this.pmntn_dffl = details.getPmntn_dffl();
+        this.lattitude = details.getLattitude();
+        this.longitude = details.getLongitude();
+        this.place_name = details.getPlace_name();
     }
 
     public Details toEntity(){
@@ -42,6 +53,9 @@ public class DetailsDto {
                 .pmntn_uppl(pmntn_uppl)
                 .pmntn_godn(pmntn_godn)
                 .pmntn_dffl(pmntn_dffl)
+                .longitude(longitude)
+                .lattitude(lattitude)
+                .place_name(place_name)
                 .build();
 
         return details;

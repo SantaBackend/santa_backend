@@ -43,6 +43,18 @@ public class Details {
     @Column(nullable = false)
     private String pmntn_dffl;
 
+    //위도
+    @Column
+    private String lattitude;
+
+    //경도
+    @Column
+    private String longitude;
+
+    //장소이름
+    @Column
+    private String place_name;
+
     @ManyToOne
     @JoinColumn(name = "post_id")
     private Board board;
@@ -54,6 +66,9 @@ public class Details {
         this.pmntn_uppl = detailsDto.getPmntn_uppl();
         this.pmntn_godn = detailsDto.getPmntn_godn();
         this.pmntn_dffl = detailsDto.getPmntn_dffl();
+        this.lattitude = detailsDto.getLattitude();
+        this.longitude = detailsDto.getLongitude();
+        this.place_name = detailsDto.getPlace_name();
     }
 
 }
