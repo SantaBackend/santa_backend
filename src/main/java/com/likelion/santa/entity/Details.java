@@ -1,8 +1,17 @@
 package com.likelion.santa.entity;
 
+import com.likelion.santa.dto.DetailsDto;
+import lombok.*;
+
 import javax.persistence.*;
 
 @Entity
+@Table(name = "details")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Details {
 
     @Id
@@ -33,5 +42,18 @@ public class Details {
     //등산로 난이도 명
     @Column(nullable = false)
     private String pmntn_dffl;
-    
+
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Board board;
+
+    public void update(DetailsDto detailsDto){
+        this.pmntn_nm = detailsDto.getPmntn_nm();
+        this.pmntn_main = detailsDto.getPmntn_main();
+        this.xpmntn_lt = detailsDto.getXpmntn_lt();
+        this.pmntn_uppl = detailsDto.getPmntn_uppl();
+        this.pmntn_godn = detailsDto.getPmntn_godn();
+        this.pmntn_dffl = detailsDto.getPmntn_dffl();
+    }
+
 }

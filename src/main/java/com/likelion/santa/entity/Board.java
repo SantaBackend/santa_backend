@@ -51,6 +51,14 @@ public class Board {
     //등산로 이미지
     @Column String hkImageUrl;
 
+    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OrderBy("id asc")
+    private List<Details> detailsList;
+
+    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @OrderBy("id asc") //댓글 정렬
+    private List<Reply> replyList;
+
     public void update(BoardDto boardDto){
         this.hkngpntdscrt = boardDto.getHkngpntdscrt();
         this.mntninfopoflc = boardDto.getMntninfopoflc();
@@ -61,7 +69,4 @@ public class Board {
         this.hkImageUrl = boardDto.getHkImageUrl();
     }
 
-    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-    @OrderBy("id asc") //댓글 정렬
-    private List<Reply> replyList;
 }

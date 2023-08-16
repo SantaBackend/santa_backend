@@ -13,7 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReplyRequest {
-    private Long id;
+
     private String content;
     private String username;
     private Date regDate;
@@ -21,7 +21,6 @@ public class ReplyRequest {
 
     public Reply toEntity(){
         Reply reply = Reply.builder()
-                .id(id)
                 .content(content)
                 .username(username)
                 .regDate(regDate)
