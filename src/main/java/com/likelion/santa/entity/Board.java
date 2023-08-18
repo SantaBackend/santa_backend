@@ -69,4 +69,14 @@ public class Board {
         this.hkImageUrl = boardDto.getHkImageUrl();
     }
 
+    public BoardDto toDto(){
+        return BoardDto.builder()
+                .id(id)
+                .hkngpntdscrt(hkngpntdscrt)
+                .mntninfopoflc(mntninfopoflc)
+                .mntnid(mntnid)
+                .mntnnm(mntnnm)
+                .pbtrninfodscrt(pbtrninfodscrt)
+                .build();
+    }
 }
