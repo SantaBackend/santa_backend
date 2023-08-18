@@ -8,8 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-@CrossOrigin(origins = "http://localhost:3000")
-@RestController
+@CrossOrigin(origins = "http://localhost:8080",allowedHeaders = "*")@RestController
 @RequestMapping("/upload")
 public class AwsS3Controller {
 

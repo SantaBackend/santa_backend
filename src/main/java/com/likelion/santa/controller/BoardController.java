@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
-@RestController
+@CrossOrigin(origins = "http://localhost:8080",allowedHeaders = "*")@RestController
 @RequestMapping("/board")
 public class BoardController {
 
