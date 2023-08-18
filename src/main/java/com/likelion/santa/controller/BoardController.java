@@ -1,11 +1,14 @@
 package com.likelion.santa.controller;
 
 import com.likelion.santa.dto.BoardDto;
+import com.likelion.santa.dto.BoardListDto;
 import com.likelion.santa.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -20,6 +23,13 @@ public class BoardController {
     public ResponseEntity<String> writeBoard(@RequestBody BoardDto boardDto) {
         boardService.write(boardDto);
         return ResponseEntity.status(HttpStatus.CREATED).body("게시물이 작성되었습니다.");
+    }
+
+    //게시물 리스트 조회
+    @GetMapping()
+    public ResponseEntity<List<BoardListDto>> getBoardList() {
+        List<BoardListDto> boardList = boardService.getBoardList();
+        return ResponseEntity.status(HttpStatus.OK).body(boardList);
     }
 
     //게시물 조회

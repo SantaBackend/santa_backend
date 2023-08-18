@@ -1,11 +1,14 @@
 package com.likelion.santa.service;
 
 import com.likelion.santa.dto.BoardDto;
+import com.likelion.santa.dto.BoardListDto;
 import com.likelion.santa.entity.Board;
 import com.likelion.santa.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class BoardService {
@@ -22,7 +25,7 @@ public class BoardService {
         return boardDto;
     }
 
-    //게시물 조회
+    //게시물 상세 조회
     @Transactional(readOnly = true)
     public BoardDto getBoard(Long id){
         Board board = boardRepository.findById(id).orElseThrow(() -> {
@@ -32,6 +35,13 @@ public class BoardService {
         BoardDto boardDto = new BoardDto(board);
 
         return boardDto;
+    }
+
+    //게시물 리스트 조회
+    @Transactional(readOnly = true)
+    public List<BoardListDto> getBoardList(){
+        List<Board> boards = boardRepository.findAll();
+        return BoardListDto.fromBoardList(boards);
     }
 
     //게시물 수정
